@@ -49,10 +49,10 @@ const getRow = async () => {
         }
         var l=j['data'];
         
-        if(l.split('shopify').length<l.length && l.split('shopify').length!=1) rows[index]._rawData[1] = 'SHOPIFY'
-        else if(l.split('woocommerce').length<l.length && l.split('woocommerce').length!=1) rows[index]._rawData[1] ='WOOCOMMERCE'
-        else if(l.split('bigcommerce').length<l.length && l.split('bigcommerce').length!=1) rows[index]._rawData[1] ='BIGCOMMERCE'
-        else if(l.split('magento').length<l.length && l.split('magento').length!=1) rows[index]._rawData[1] ='MAGENTO'
+        if(l.search('shopify')!==-1) rows[index]._rawData[1] = 'SHOPIFY'
+        else if(l.search('bigcommerce')!==-1) rows[index]._rawData[1] ='BIGCOMMERCE'
+        else if(l.search('woocommerce')!==-1) rows[index]._rawData[1] ='WOOCOMMERCE'
+        else if(l.search('magento')!==-1) rows[index]._rawData[1] ='MAGENTO'
         else rows[index]._rawData[1] ='OTHERS';
         await rows[index].save();
     }
